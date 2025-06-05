@@ -97,4 +97,12 @@ async def votee(ctx,*, question):
     await message.add_reaction("👍")
     await message.add_reaction("👎")
 
+@bot.slash_command(name="help", description="Hiển thị hướng dẫn sử dụng bot.")
+async def help(ctx):
+    embed = discord.Embed(title="Hướng dẫn sử dụng bot", color=discord.Color.green())
+    embed.add_field(name="!assign <vai trò>", value="Gán vai trò cho bạn. Ví dụ: !assign valorant", inline=False)
+    embed.add_field(name="!remove <vai trò>", value="Xoá vai trò khỏi bạn. Ví dụ: !remove lol", inline=False)
+    embed.add_field(name="!votee <câu hỏi>", value="Tạo một cuộc bỏ phiếu với câu hỏi của bạn.", inline=False)
+    await ctx.send(embed=embed)
+
 bot.run(token)
