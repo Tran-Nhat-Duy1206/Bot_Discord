@@ -2,10 +2,12 @@ import discord
 from discord.ext import commands 
 import os
 from dotenv import load_dotenv
+import logging
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
+handlers = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 intents = discord.Intents.default() # Thiết lập intents để có thể nhận tin nhắn
 intents.message_content = True # Cần thiết để bot có thể đọc nội dung tin nhắn
 intents.members = True # Cần thiết để bot có thể nhận thông tin thành viên
