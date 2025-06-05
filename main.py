@@ -22,10 +22,6 @@ async def on_ready():
     print('------')
 
 @bot.event
-async def on_member_join(member):
-    await member.send(f'Chào mừng {member.name} đến với máy chủ!')
-
-@bot.event
 async def on_message(message): 
     if message.author == bot.user:
         return 
@@ -96,13 +92,5 @@ async def votee(ctx,*, question):
     message = await ctx.send(embed=embed)
     await message.add_reaction("👍")
     await message.add_reaction("👎")
-
-@bot.slash_command(name="help", description="Hiển thị hướng dẫn sử dụng bot.")
-async def help(ctx):
-    embed = discord.Embed(title="Hướng dẫn sử dụng bot", color=discord.Color.green())
-    embed.add_field(name="!assign <vai trò>", value="Gán vai trò cho bạn. Ví dụ: !assign valorant", inline=False)
-    embed.add_field(name="!remove <vai trò>", value="Xoá vai trò khỏi bạn. Ví dụ: !remove lol", inline=False)
-    embed.add_field(name="!votee <câu hỏi>", value="Tạo một cuộc bỏ phiếu với câu hỏi của bạn.", inline=False)
-    await ctx.send(embed=embed)
 
 bot.run(token)
