@@ -3,15 +3,18 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import logging
+import aiohttp
+
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
+WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
 
-logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler('discord.log', encoding='utf-8', mode='w')]) # Thiết lập logging để ghi log vào file discord.log
+handlers=[logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')]
 
 intents = discord.Intents.default() # Thiết lập intents để có thể nhận tin nhắn
-intents.message_content = True # Cần thiết để bot có thể đọc nội dung tin nhắn
-intents.members = True # Cần thiết để bot có thể nhận thông tin thành viên
+intents.message_content = True
+intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -51,7 +54,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 @bot.command()
-async def assign(ctx, role_name: str):
+async def add(ctx, role_name: str):
     allowed_roles = ["tft", "valorant", "lol"]
     role_name = role_name.lower()
 
@@ -93,4 +96,24 @@ async def votee(ctx,*, question):
     await message.add_reaction("👍")
     await message.add_reaction("👎")
 
+async def get_weather(city):
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric&lang=vi"
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp: 
+            if resp.status == 200:
+                data = await resp.json() 
+                temp = data['main']['temp']
+                weather = data['weather'][0]['description']
+                return f"🌤️ Thời tiết tại {city.title()}: {weather}, {temp}°C"
+            else:
+                return "❌ Lấy dữ liệu thời tiết thất bại."
+            
+@bot.command()
+async def thoitiet(ctx, *, city: str):
+    if len(city) > 50:
+        await ctx.send("❌ Tên thành phố quá dài.")
+        return
+    result = await get_weather(city)
+    await ctx.send(result)
+    
 bot.run(token)
