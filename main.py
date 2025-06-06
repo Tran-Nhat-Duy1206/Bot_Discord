@@ -98,8 +98,8 @@ async def votee(ctx,*, question):
 
 async def get_weather(city):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric&lang=vi"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp: 
+    async with aiohttp.ClientSession() as ketnoi:
+        async with ketnoi.get(url) as resp: 
             if resp.status == 200:
                 data = await resp.json() 
                 temp = data['main']['temp']
