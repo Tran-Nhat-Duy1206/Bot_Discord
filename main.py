@@ -7,56 +7,62 @@ import aiohttp
 
 load_dotenv()
 
-token = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv('DISCORD_TOKEN')
 WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
 UNSPLASH_API_KEY = os.getenv('UNSPLASH_API_KEY')
 NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 THE_MOVIE_DB_API_KEY = os.getenv('THE_MOVIE_DB_API_KEY')
 
-handlers=[logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')]
-
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+class Bot_No_Le(commands.Bot):
+    def __init__(self):
+        super().__init__(command_prefix="-", intents=intents)
+
+    async def setup_hook(self):
+        await self.tree.sync()
+        print("✅ Slash command đã được đồng bộ hóa.")
+
+bot = Bot_No_Le()
 
 @bot.event
 async def on_ready():
-    print(f'Bot {bot.user.name} đã đăng nhập thành công!')
-    print(f'ID của bot: {bot.user.id}') 
-    print('------')
+    print(f"✅ Bot đã đăng nhập: {bot.user}")
+    await bot.change_presence(activity=discord.Game(name="Nô lệ mọi nhà!"))
 
 @bot.event
 async def on_message(message): 
     if message.author == bot.user:
         return 
     
-    if "hello" in message.content.lower():
-        await message.channel.send(f'Chào {message.author.mention}')
-    if "Xin chào" in message.content.lower():
+    lower = message.content.lower()
+    if "hello" in lower or "xin chào" in lower:
         await message.channel.send(f'Chào {message.author.mention}!')
-    if "Bạn tên gì?" in message.content.lower():
+    if "bạn tên gì" in lower:
         await message.channel.send(f'Tên tôi là {bot.user.name}!')
-    if "bye" in message.content.lower():
+    if "bye" in lower:
         await message.channel.send(f'Bye {message.author.mention}')
-    if "khoa" in message.content.lower():
-        khoa_id = 607106808670191616
-        khoa_member = message.guild.get_member(khoa_id)
-        if khoa_member:
-            await message.channel.send(f'{message.author.mention} kêu này {khoa_member.mention} béo !')
-    if "duy" in message.content.lower():
-        duy_id = 791237952378109952
-        duy_member = message.guild.get_member(duy_id)
-        if duy_member:
-            await message.channel.send(f'{message.author.mention} kêu này {duy_member.mention} ơi !') 
-    if "khang" in message.content.lower():
-        khang_id = 1278568654514028617
-        khang_member = message.guild.get_member(khang_id)
-        if khang_member:
-            await message.channel.send(f'{message.author.mention} kêu này {khang_member.mention} ơi !')
 
     await bot.process_commands(message)
+
+@bot.command()
+async def my_help(ctx):
+    embed = discord.Embed(title="Hướng dẫn sử dụng bot", description="Dưới đây là các lệnh có sẵn:", color=discord.Color.blue())
+    prefix = "-"
+    embed.add_field(name=f"{prefix}my_help", value="Hiển thị hướng dẫn sử dụng bot.", inline=False)
+    embed.add_field(name=f"{prefix}votee <câu hỏi>", value="Tạo một cuộc bỏ phiếu với câu hỏi bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}thoitiet <thành phố>", value="Hiển thị thời tiết hiện tại của thành phố bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}nhietdo <thành phố>", value="Hiển thị nhiệt độ hiện tại của thành phố bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}do_am <thành phố>", value="Hiển thị độ ẩm hiện tại của thành phố bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}toc_do_gio <thành phố>", value="Hiển thị tốc độ gió hiện tại của thành phố bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}img <đối tượng>", value="Tìm kiếm và hiển thị ảnh từ Unsplash với từ khóa bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}dong_nghia <từ>", value="Tìm kiếm từ đồng nghĩa cho từ bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}news <tên>", value="Tìm kiếm tin tức liên quan đến tên bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}movie <tên phim>", value="Tìm kiếm thông tin về phim bạn cung cấp.", inline=False)
+    embed.add_field(name=f"{prefix}nuke", value="Xoá toàn bộ tin nhắn trong kênh hiện tại (chỉ dành cho quản trị viên).", inline=False)
+    await ctx.send(embed=embed)
 
 # @bot.command()
 # async def add(ctx, role_name: str):
@@ -285,8 +291,8 @@ async def news(ctx, *, name: str = None):
 @bot.command()
 async def nuke(ctx):
     if ctx.author.guild_permissions.administrator:
-        await ctx.channel.purge(limit=1000)
-        await ctx.send(f"💥 {ctx.author.name} đã Nuke channel!")
+        await ctx.channel.purge(limit=5000)
+        await ctx.send(f"💥 {ctx.author.display_name} đã Nuke channel!") 
     else:
         await ctx.send("❌ Bạn không có quyền để thực hiện lệnh này.")
 
@@ -321,10 +327,7 @@ async def get_movie_info(movie_name):
             embed.add_field(name="Đánh giá", value=vote_average, inline=False)
             if poster_url:
                 embed.set_thumbnail(url=poster_url)
-
             return embed
-
-
 
 @bot.command()
 async def movie(ctx, *, movie_name: str = None):
@@ -347,4 +350,4 @@ async def on_command_error(ctx, error):
         logging.error(f"Đã xảy ra lỗi: {error}")
         await ctx.send("❌ Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.")
 
-bot.run(token)
+bot.run(TOKEN)
