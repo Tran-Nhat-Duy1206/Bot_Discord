@@ -1,0 +1,1169 @@
+{
+    "745686280146387033": {
+        "gold": 6975,
+        "items": [
+            {
+                "name": "Thuốc hồi máu",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Răng sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Xương Skeleton",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Da Troll",
+                "type": "misc"
+            },
+            {
+                "name": "Thịt Orc",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Troll",
+                "type": "misc"
+            },
+            {
+                "name": "Da Orc",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Răng Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Cung Goblin",
+                "dmg": 15,
+                "type": "weapon"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Cung Goblin",
+                "dmg": 15,
+                "type": "weapon"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Răng sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Dao găm Goblin",
+                "dmg": 10,
+                "type": "weapon"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Dao găm Goblin",
+                "dmg": 10,
+                "type": "weapon"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Dao găm Goblin",
+                "dmg": 10,
+                "type": "weapon"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Răng sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Răng Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Răng sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Dao găm Goblin",
+                "dmg": 10,
+                "type": "weapon"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Răng Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Răng Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Răng Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Dao găm Goblin",
+                "dmg": 10,
+                "type": "weapon"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Răng sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp sói",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Demon",
+                "type": "misc"
+            },
+            {
+                "name": "Cánh Demon",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Rồng",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Demon",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Rồng",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Rồng",
+                "type": "misc"
+            },
+            {
+                "name": "Lõi Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Mảnh giáp Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Lông sói Werewolf",
+                "type": "misc"
+            },
+            {
+                "name": "Đồng xu Goblin",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất Goblin",
+                "type": "misc"
+            }
+        ],
+        "equipped_weapon": {
+            "name": "Cung Goblin",
+            "dmg": 15,
+            "type": "weapon"
+        }
+    },
+    "1115368120224317500": {
+        "gold": 175,
+        "items": [
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            },
+            {
+                "name": "Tinh chất sói",
+                "type": "misc"
+            }
+        ],
+        "equipped_weapon": null
+    }
+}

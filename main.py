@@ -4,6 +4,9 @@ import os
 from dotenv import load_dotenv 
 import logging
 import aiohttp 
+import json
+import random
+from collections import Counter
 
 load_dotenv()
 
@@ -17,19 +20,23 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
+
+logging.info("✅ Slash command đã được đồng bộ hoá.")
+
 class Bot_No_Le(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix="-", intents=intents)
 
     async def setup_hook(self):
         await self.tree.sync()
-        print("✅ Slash command đã được đồng bộ hóa.")
+        logging.info("✅ Slash command đã được đồng bộ hóa.")
 
 bot = Bot_No_Le()
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot đã đăng nhập: {bot.user}")
+    logging.info(f"✅ Bot đã đăng nhập: {bot.user}")
     await bot.change_presence(activity=discord.Game(name="Nô lệ mọi nhà!"))
 
 @bot.event
@@ -64,38 +71,6 @@ async def my_help(ctx):
     embed.add_field(name=f"{prefix}nuke", value="Xoá toàn bộ tin nhắn trong kênh hiện tại (chỉ dành cho quản trị viên).", inline=False)
     await ctx.send(embed=embed)
 
-# @bot.command()
-# async def add(ctx, role_name: str):
-#     allowed_roles = ["tft", "valorant", "lol"]
-#     role_name = role_name.lower()
-
-#     if role_name not in allowed_roles:
-#         await ctx.send(f" Vai trò `{role_name}` không được phép. Hãy chọn từ: {', '.join(allowed_roles)}.")
-#         return
-
-#     role = discord.utils.get(ctx.guild.roles, name=role_name)
-#     if role:
-#         await ctx.author.add_roles(role)
-#         await ctx.send(f'Đã gán vai trò {role_name} cho {ctx.author.mention}.')
-#     else:
-#         await ctx.send(f'Vai trò {role_name} không tồn tại.')
-
-# @bot.command()
-# async def remove(ctx, role_name: str):
-#     allowed_roles = ["tft", "valorant", "lol"]
-#     role_name = role_name.lower()
-
-#     if role_name not in allowed_roles:
-#         await ctx.send(f" Vai trò `{role_name}` không được phép. Hãy chọn từ: {', '.join(allowed_roles)}.")
-#         return
-
-#     role = discord.utils.get(ctx.guild.roles, name=role_name)
-#     if role in ctx.author.roles:
-#         await ctx.author.remove_roles(role)
-#         await ctx.send(f'Đã xoá vai trò {role_name} khỏi {ctx.author.mention}.')
-#     else:
-#         await ctx.send(f'Bạn không có vai trò {role_name}.')
-
 @bot.command()
 async def votee(ctx,*, question):
     if not question:
@@ -122,7 +97,7 @@ async def get_weather(city):
 @bot.command()
 async def thoitiet(ctx, *, city: str = None):
     if not city or not city.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `!thoitiet Hà Nội`")
+        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `-thoitiet Hà Nội`")
         return
     if len(city) > 50:
         await ctx.send("❌ Tên thành phố quá dài.")
@@ -147,7 +122,7 @@ async def nhietdo(city):
 @bot.command()
 async def nhietdo(ctx, *, city: str = None):
     if not city or not city.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `!nhietdo Hà Nội`")
+        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `-nhietdo Hà Nội`")
         return
     if len(city) > 50:
         await ctx.send("❌ Tên thành phố quá dài.")
@@ -170,7 +145,7 @@ async def do_am(city):
 @bot.command()
 async def do_am(ctx, *, city: str = None):
     if not city or not city.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `!doam Hà Nội`")
+        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `-do_am Hà Nội`")
         return
     if len(city) > 50:
         await ctx.send("❌ Tên thành phố quá dài.")
@@ -193,7 +168,7 @@ async def wind_speed(city):
 @bot.command()
 async def toc_do_gio(ctx, *, city: str = None):
     if not city or not city.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `!tocdogio Hà Nội`")
+        await ctx.send("❌ Vui lòng cung cấp tên thành phố. Ví dụ: `-toc_do_gio Hà Nội`")
         return
     if len(city) > 50:
         await ctx.send("❌ Tên thành phố quá dài.")
@@ -216,7 +191,7 @@ async def get_unsplash_image(something):
 @bot.command()
 async def img(ctx, *, something: str = None):
     if not something or not something.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên đối tượng để tìm kiếm ảnh. Ví dụ: `!img hoa`")
+        await ctx.send("❌ Vui lòng cung cấp tên đối tượng để tìm kiếm ảnh. Ví dụ: `-img hoa`")
         return
     if len(something) > 50:
         await ctx.send("❌ Tên đối tượng quá dài.")
@@ -249,7 +224,7 @@ async def get_synonym(word):
 @bot.command()
 async def dong_nghia(ctx, *, word: str = None):
     if not word or not word.strip():
-        await ctx.send("❌ Vui lòng cung cấp một từ để tìm đồng nghĩa. Ví dụ: `!dongnghia love`")
+        await ctx.send("❌ Vui lòng cung cấp một từ để tìm đồng nghĩa. Ví dụ: `-dong_nghia love`")
         return
     if len(word) > 50:
         await ctx.send("❌ Từ quá dài.")
@@ -280,7 +255,7 @@ async def get_news(name):
 @bot.command()
 async def news(ctx, *, name: str = None):
     if not name or not name.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên để tìm kiếm tin tức. Ví dụ: `!news công nghệ`")
+        await ctx.send("❌ Vui lòng cung cấp tên để tìm kiếm tin tức. Ví dụ: `-news công nghệ`")
         return
     if len(name) > 50:
         await ctx.send("❌ Tên quá dài.")
@@ -332,7 +307,7 @@ async def get_movie_info(movie_name):
 @bot.command()
 async def movie(ctx, *, movie_name: str = None):
     if not movie_name or not movie_name.strip():
-        await ctx.send("❌ Vui lòng cung cấp tên phim để tìm kiếm. Ví dụ: `!movie Inception`")
+        await ctx.send("❌ Vui lòng cung cấp tên phim để tìm kiếm. Ví dụ: `-movie Inception`")
         return
     if len(movie_name) > 100:
         await ctx.send("❌ Tên phim quá dài.")
@@ -348,6 +323,420 @@ async def on_command_error(ctx, error):
         await ctx.send(f"⏳ Lệnh này đang trong thời gian chờ. Vui lòng thử lại sau {error.retry_after:.2f} giây.")
     else:
         logging.error(f"Đã xảy ra lỗi: {error}")
-        await ctx.send("❌ Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.")
+        logging.exception(f"Lỗi xảy ra: {type(error).__name__} - {error}")
+        await ctx.send(f"❌ Đã xảy ra lỗi không mong muốn: `{type(error).__name__} - {error}`")
+
+@bot.tree.command(name="avatar", description="Hiển thị ảnh đại diện của người dùng.")
+async def avatar(interaction: discord.Interaction, user: discord.User = None):
+    if user is None:
+        user = interaction.user
+    embed = discord.Embed(title=f"Ảnh đại diện của {user.name}", color=discord.Color.blue())
+    embed.set_image(url=user.avatar.url)
+    await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="ping", description="Kiểm tra độ trễ của bot.")
+async def ping(interaction: discord.Interaction):
+    latency = round(bot.latency * 1000)
+    embed = discord.Embed(title="Ping", description=f"Độ trễ hiện tại: {latency} ms", color=discord.Color.green())
+    await interaction.response.send_message(embed=embed)
+
+#GAME RPG
+INVENTORY_FILE = 'inventory.json'
+
+# Hàm load kho đồ từ file
+def load_inventory():
+    if os.path.exists(INVENTORY_FILE):
+        with open(INVENTORY_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+# Hàm lưu kho đồ vào file
+def save_inventory():
+    with open(INVENTORY_FILE, 'w', encoding='utf-8') as f:
+        json.dump(user_inventories, f, indent=4, ensure_ascii=False)
+
+# Hàm tạo kho mặc định
+def create_default_inventory():
+    return {
+        "gold": 100,
+        "items": [],
+        "equipped_weapon": None
+    }
+
+# Item có thể rơi từ slime
+SLIME_ITEMS = {
+    "Nhầy Slime": 0.53333,
+    "Tinh chất Slime": 0.26667,
+    "Mảnh vỡ Slime": 0.13333,
+    "Lõi Slime": 0.06667,
+}
+# Item có thể rơi từ Orc
+ORC_ITEMS = {
+    "Rìu Orc": 0.50395,
+    "Mảnh giáp Orc": 0.25198,
+    "Tinh chất Orc": 0.12597,
+    "Lõi Orc": 0.063,
+    "Thịt Orc": 0.0315,
+    "Da Orc": 0.01573,
+    "Nanh Orc": 0.00787,
+}
+# Item có thể rơi từ Skeleton
+SKELETON_ITEMS = {
+    "Xương Skeleton": 0.50794,
+    "Mảnh giáp Skeleton": 0.25395,
+    "Tinh chất Skeleton": 0.12699,
+    "Lõi Skeleton": 0.06348,
+    "Kiếm Skeleton": 0.03176,
+    "Cung Skeleton": 0.01588,
+}
+# Item có thể rơi từ Dragon
+DRAGON_ITEMS = {
+    "Vảy Rồng": 0.50395,
+    "Mảnh giáp Rồng": 0.25198,
+    "Tinh chất Rồng": 0.12597,
+    "Lõi Rồng": 0.063,
+    "Răng Rồng": 0.0315,
+    "Móng vuốt Rồng": 0.01573,
+    "Cánh Rồng": 0.00787,
+}
+# Item có thể rơi từ Zombie
+ZOMBIE_ITEMS = {
+    "Thịt Zombie": 0.50794,
+    "Mảnh giáp Zombie": 0.25395,
+    "Tinh chất Zombie": 0.12699,
+    "Lõi Zombie": 0.06348,
+    "Xương Zombie": 0.03176,
+    "Não Zombie": 0.01588,
+}
+# Item có thể rơi từ Goblin
+GOBLIN_ITEMS = {
+    "Đồng xu Goblin": 0.50794,
+    "Mảnh giáp Goblin": 0.25395,
+    "Tinh chất Goblin": 0.12699,
+    "Lõi Goblin": 0.06348,
+    "Dao găm Goblin": 0.03176,
+    "Cung Goblin": 0.01588,
+}
+# Item có thể rơi từ Troll
+TROLL_ITEMS = {
+    "Da Troll": 0.53333,
+    "Mảnh giáp Troll": 0.26667,
+    "Tinh chất Troll": 0.13333,
+    "Lõi Troll": 0.06667,
+}
+# Item có thể rơi từ Vampire
+VAMPIRE_ITEMS = {
+    "Răng nanh Vampire": 0.51613,
+    "Mảnh áo choàng Vampire": 0.25806,
+    "Tinh chất Vampire": 0.12903,
+    "Lõi Vampire": 0.06452,
+    "Máu Vampire": 0.03226,
+}
+# Item có thể rơi từ Werewolf
+WEREWOLF_ITEMS = {
+    "Lông Werewolf": 0.51613,
+    "Mảnh giáp Werewolf": 0.25806,
+    "Tinh chất Werewolf": 0.12903,
+    "Lõi Werewolf": 0.06452,
+    "Răng Werewolf": 0.03226,
+}
+# Item có thể rơi từ Wolf
+WOLF_ITEMS = {
+    "Lông sói": 0.51613,
+    "Mảnh giáp sói": 0.25806,
+    "Tinh chất sói": 0.12903,
+    "Lõi sói": 0.06452,
+    "Răng sói": 0.03226,
+}
+# Item có thể rơi từ Bandit
+BANDIT_ITEMS = {
+    "Dao găm Bandit": 0.50794,
+    "Mảnh giáp Bandit": 0.25395,
+    "Tinh chất Bandit": 0.12699,
+    "Lõi Bandit": 0.06348,
+    "Kiếm Bandit": 0.03176,
+    "Nỏ Bandit": 0.01588,
+}
+# Item có thể rơi từ Demon
+DEMON_ITEMS = {
+    "Sừng Demon": 0.50794,
+    "Mảnh giáp Demon": 0.25395,
+    "Tinh chất Demon": 0.12699,
+    "Lõi Demon": 0.06348,
+    "Cánh Demon": 0.03176,
+    "Răng Demon": 0.01588,
+}
+# Item có thể rơi từ Wyvern
+WYVERN_ITEMS = {
+    "Vảy Wyvern": 0.50794,
+    "Mảnh giáp Wyvern": 0.25395,
+    "Tinh chất Wyvern": 0.12699,
+    "Lõi Wyvern": 0.06348,
+    "Răng Wyvern": 0.03176,
+    "Móng vuốt Wyvern": 0.01588,
+}
+
+# Boss
+BOSS_MONSTERS = {"Dragon", "Demon", "Wyvern"}
+
+# Địa điểm và quái vật tương ứng
+MAP_ENEMIES = {
+    "🌲 rừng": ["Goblin", "Wolf", "Werewolf"],
+    "🕳️ hang động": ["Skeleton", "Troll", "Orc"],
+    "🦠 đầm lầy": ["Slime", "Zombie", "Bandit"],
+    "🏰 lâu đài": ["Vampire", "Demon", "Wyvern"],
+    "🌋 núi lửa": ["Dragon", "Demon"]
+}
+# Tạo alias zone map không chứa emoji
+ALIAS_ZONE_MAP = {}
+for zone_name in MAP_ENEMIES:
+    clean_name = zone_name.split(" ", 1)[-1].strip().lower()  # bỏ emoji, lấy phần chữ
+    ALIAS_ZONE_MAP[clean_name] = zone_name  # map từ "rừng" -> "🌲 rừng"
+
+# Bản đồ quái -> item rơi
+ENEMY_DROPS = {
+    "Slime": SLIME_ITEMS,
+    "Orc": ORC_ITEMS,
+    "Skeleton": SKELETON_ITEMS,
+    "Dragon": DRAGON_ITEMS,
+    "Zombie": ZOMBIE_ITEMS,
+    "Goblin": GOBLIN_ITEMS,
+    "Troll": TROLL_ITEMS,
+    "Vampire": VAMPIRE_ITEMS,
+    "Werewolf": WEREWOLF_ITEMS,
+    "Wolf": WOLF_ITEMS,
+    "Bandit": BANDIT_ITEMS,
+    "Demon": DEMON_ITEMS,
+    "Wyvern": WYVERN_ITEMS
+}
+# Rơi đồ ngẫu nhiên
+def get_random_drop(monster_name):
+    drops = ENEMY_DROPS.get(monster_name, {})
+    if not drops:
+        return None
+    items = list(drops.keys())
+    weights = list(drops.values())
+    return random.choices(items, weights=weights, k=1)[0]
+
+def get_rarity_tag(rate):
+    if rate < 0.001:
+        return "🔥 (huyền thoại!)"
+    elif rate < 0.01:
+        return "🌟 (cực hiếm!)"
+    elif rate < 0.1:
+        return "✨ (hiếm!)"
+    else:
+        return ""
+
+# Vũ khí
+WEAPONS = [
+    {"name": "Kiếm Sắt", "dmg": 15},
+    {"name": "Rìu Chiến", "dmg": 20},
+    {"name": "Cung Dài", "dmg": 12},
+    {"name": "Dao Găm", "dmg": 10},
+    {"name": "Gậy Phép", "dmg": 25},
+    {"name": "Rìu Orc", "dmg": 26},
+    {"name": "Kiếm Skeleton", "dmg": 15},
+    {"name": "Cung Skeleton", "dmg": 12},
+    {"name": "Dao găm Goblin", "dmg": 10},
+    {"name": "Cung Goblin", "dmg": 15},
+    {"name": "Kiếm Bandit", "dmg": 17},
+    {"name": "Nỏ Bandit", "dmg": 20},
+    {"name": "Dao găm Bandit", "dmg": 12},
+    {"name": "Dragon Sword", "dmg": 40}
+]
+
+# Tạo bảng map -> item rơi
+HUNT_ZONES = {}
+for location, monsters in MAP_ENEMIES.items():
+    drops = []
+    for monster in monsters:
+        drops.extend(ENEMY_DROPS.get(monster, []))
+    HUNT_ZONES[location.lower()] = drops
+# Dữ liệu chính trong RAM
+user_inventories = load_inventory()
+
+# Xem kho đồ
+@bot.command()
+async def inventory(ctx):
+    user_id = str(ctx.author.id)
+    if user_id not in user_inventories:
+        user_inventories[user_id] = create_default_inventory()
+        save_inventory()
+    
+    inv = user_inventories[user_id]
+
+    def get_item_display(item):
+        if isinstance(item, dict):
+            if item.get("type") == "weapon":
+                return f"{item['name']} (🗡️ {item['dmg']} dmg)", "weapon"
+            else:
+                return item["name"], "other"
+        return item, "other"
+
+    # Gom nhóm và đếm số lượng
+    counter = Counter()
+    type_map = {}
+
+    for item in inv["items"]:
+        name, group = get_item_display(item)
+        counter[name] += 1
+        type_map[name] = group
+        if "Tinh chất" in name or "Lõi" in name or "Mảnh giáp" in name:
+            type_map[name] = "material"
+
+    grouped = {
+        "weapon": [],
+        "material": [],
+        "other": []
+    }
+
+    for name, count in counter.items():
+        group = type_map.get(name, "other")
+        grouped[group].append(f"• {name} x{count}")
+
+    result = f"💰 Vàng: {inv['gold']}\n\n"
+    if grouped["weapon"]:
+        result += "**🗡️ Vũ khí:**\n" + "\n".join(grouped["weapon"]) + "\n\n"
+    if grouped["material"]:
+        result += "**🔩 Nguyên liệu:**\n" + "\n".join(grouped["material"]) + "\n\n"
+    if grouped["other"]:
+        result += "**📦 Khác:**\n" + "\n".join(grouped["other"]) + "\n\n"
+
+    equipped = inv.get("equipped_weapon")
+    equipped_text = f"{equipped['name']} (🗡️ {equipped['dmg']} dmg)" if equipped else "Chưa trang bị"
+    result += f"🔧 Trang bị: {equipped_text}"
+
+    if len(result) > 1900:
+        result = result[:1800] + "\n... (rút gọn do quá dài)"
+
+    await ctx.send(result)
+
+# Giao dịch: chuyển vật phẩm cho người khác
+@bot.command()
+async def trade(ctx, member: discord.Member, *, item_name):
+    sender_id = str(ctx.author.id)
+    receiver_id = str(member.id)
+
+    if sender_id not in user_inventories:
+        user_inventories[sender_id] = create_default_inventory()
+    if receiver_id not in user_inventories:
+        user_inventories[receiver_id] = create_default_inventory()
+
+    sender_inv = user_inventories[sender_id]
+    receiver_inv = user_inventories[receiver_id]
+
+    if item_name not in sender_inv["items"]:
+        await ctx.send("❌ Bạn không có vật phẩm đó!")
+        return
+
+    # Chuyển vật phẩm
+    sender_inv["items"].remove(item_name)
+    receiver_inv["items"].append(item_name)
+    save_inventory()
+
+    await ctx.send(f"✅ Đã chuyển **{item_name}** từ {ctx.author.mention} cho {member.mention}!")
+
+# Map
+@bot.command()
+async def map(ctx):
+    message = "**📍 Danh sách khu vực săn, quái vật và vật phẩm rơi:**\n"
+    for location, enemies in MAP_ENEMIES.items():
+        message += f"\n**🌍 {location.title()}**\n"
+        for monster in enemies:
+            drops = ENEMY_DROPS.get(monster, [])
+            drop_text = ", ".join(drops) if drops else "Không có vật phẩm"
+            message += f"  • 👹 {monster}: 🎁 {drop_text}\n"
+    
+    await ctx.send(message)
+
+# lệnh săn
+@bot.command()
+async def hunt(ctx, *, zone: str = None):
+    user_id = str(ctx.author.id)
+    if user_id not in user_inventories:
+        user_inventories[user_id] = create_default_inventory()
+
+    if zone is None:
+        await ctx.send("❌ Vui lòng chọn khu vực để săn. Dùng `-map` để xem danh sách khu vực.")
+        return
+
+    zone = zone.lower().strip()
+    if zone not in ALIAS_ZONE_MAP:
+        await ctx.send("❌ Khu vực không tồn tại. Dùng `-map` để xem khu vực hợp lệ.")
+        return
+
+    normalized_zone = ALIAS_ZONE_MAP[zone]
+    all_monsters = MAP_ENEMIES[normalized_zone]
+
+    # Tạo danh sách monster theo tỉ lệ
+    weighted_monsters = []
+    for monster in all_monsters:
+        if monster in BOSS_MONSTERS:
+            weighted_monsters.append(monster)
+        else:
+            weighted_monsters.extend([monster] * random.randint(3, 6))
+
+    encounter_count = random.randint(2, 4)
+    encountered = random.choices(weighted_monsters, k=encounter_count)
+
+    results = []
+    total_gold = 0
+
+    for monster in encountered:
+        item_count = random.randint(1, 2)
+        items_text = []
+
+        for _ in range(item_count):
+            item_name = get_random_drop(monster)
+            weapon = next((w for w in WEAPONS if w["name"].lower() == item_name.lower()), None)
+            if weapon:
+                item_found = {"name": weapon["name"], "dmg": weapon["dmg"], "type": "weapon"}
+                found_text = f"vũ khí **{weapon['name']}** (🗡️ {weapon['dmg']} dmg)"
+            else:
+                item_found = {"name": item_name, "type": "misc"}
+                found_text = f"vật phẩm **{item_name}**"
+
+            drop_rate = ENEMY_DROPS[monster].get(item_name, 1.0)
+            rarity_tag = get_rarity_tag(drop_rate)
+            if rarity_tag:
+                found_text += f" {rarity_tag}"
+
+            user_inventories[user_id]["items"].append(item_found)
+            items_text.append(found_text)
+
+        gold_earned = random.randint(20, 50)
+        if monster in BOSS_MONSTERS:
+            gold_earned += random.randint(20, 50)
+            items_text.append("💎 Rơi thêm vật phẩm do gặp boss!")
+
+        total_gold += gold_earned
+        results.append(f"• Gặp **{monster}**, nhận {gold_earned} vàng, nhặt được: " + ", ".join(items_text))
+
+    user_inventories[user_id]["gold"] += total_gold
+    save_inventory()
+
+    await ctx.send(
+        f"🏹 Bạn đã đi săn ở **{normalized_zone}** và gặp {encounter_count} quái:\n"
+        + "\n".join(results)
+        + f"\n\n💰 Tổng vàng nhận được: **{total_gold}**"
+    )
+
+# Lệnh mặc trang bị
+@bot.command()
+async def equip(ctx, *, weapon_name):
+    user_id = str(ctx.author.id)
+    if user_id not in user_inventories:
+        user_inventories[user_id] = create_default_inventory()
+
+    inventory = user_inventories[user_id]
+    for item in inventory["items"]:
+        if isinstance(item, dict) and item.get("type") == "weapon" and item["name"].lower() == weapon_name.lower():
+            inventory["equipped_weapon"] = item
+            save_inventory()
+            await ctx.send(f"🛡️ Bạn đã trang bị **{item['name']}** (🗡️ {item['dmg']} dmg)!")
+            return
+
+    await ctx.send("❌ Bạn không có vũ khí đó trong kho đồ!")
 
 bot.run(TOKEN)
